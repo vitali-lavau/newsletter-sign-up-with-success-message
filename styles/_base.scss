@@ -1,0 +1,197 @@
+@use "variables" as *;
+@use "functions" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $base-font;
+}
+
+body {
+  font-family: $font-family;
+  color: $color-blue-800;
+  line-height: $leading;
+  background-color: $color-blue-700;
+  font-optical-sizing: auto;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.form-control {
+  @include flex-col(to-rem(8));
+
+  &--error {
+
+    .label {
+
+      span.error {
+        display: block;
+      }
+    }
+  }
+}
+
+.label {
+  @include flex-row($y: space-between, $z: center);
+
+  span {
+    @include text-preset-3;
+
+    &.error {
+      display: none;
+      color: $color-red;
+    }
+  }
+}
+
+.input {
+  padding: $spacing-200 $spacing-300;
+  @include text-preset-2;
+  outline: none;
+  border: to-rem(1) solid $color-gray;
+  border-radius: to-rem(8);
+  transition: border-color .4s, color .4s, background-color .4s;
+
+  &:focus {
+    border-color: $color-blue-800;
+  }
+
+  &::placeholder {
+    opacity: .5;
+  }
+
+  &.error {
+    color: $color-red;
+    border-color: $color-red;
+    background-color: $color-red-100;
+  }
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-200 $spacing-400;
+  @include text-preset-2(bold);
+  color: $color-white;
+  background-color: $color-blue-800;
+  border: none;
+  outline: none;
+  border-radius: to-rem(8);
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+  transition: box-shadow .4s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $gradient-4;
+    border-radius: to-rem(8);
+    opacity: 0;
+    transition: opacity .4s;
+    z-index: -1;
+  }
+
+  &:hover {
+    box-shadow: 0 16px 32px 0 rgba(255, 97, 85, 0.50);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  overflow: auto;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.4s;
+
+  @media (min-width: to-rem(768)) {
+    padding: $spacing-800;
+  }
+
+  &.fade-in {
+    opacity: 1;
+    transition: opacity 0.4s;
+  }
+}
+
+.modal {
+  width: 100%;
+  min-height: 100%;
+  padding: to-rem(150) $spacing-300 to-rem(70);
+  margin: auto;
+  @include flex-col($x: $spacing-400);
+  background-color: $color-white;
+  z-index: 101;
+
+  &__img {
+    width: to-rem(64);
+    height: to-rem(64);
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__title {
+    @include text-preset-1;
+  }
+
+  &__text {
+    margin: 0 0 auto;
+    @include text-preset-2;
+  }
+
+  @media (min-width: to-rem(768)) {
+    width: to-rem(504);
+    min-height: unset;
+    padding: $spacing-800;
+    border-radius: to-rem(36);
+    box-shadow: 0 15px 60px 0 rgba(0, 0, 0, 0.25);
+
+    &__text {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.app {
+  min-height: 100vh;
+  @include flex-row($y: center, $z: center);
+
+  @media (min-width: to-rem(768)) {
+    padding: to-rem(73) to-rem(80);
+  }
+}

@@ -1,0 +1,9 @@
+@use "variables" as *;
+
+@function to-rem($px) {
+  @if unitless($px) {
+    @warn "Параметр #{$px} не содержит единиц. Добавляю px.";
+    $px: $px * 1px;
+  }
+  @return ($px / $base-font) * 1rem;
+}

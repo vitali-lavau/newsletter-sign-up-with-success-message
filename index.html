@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/main.css">
+</head>
+
+<body>
+<main class="app">
+  <form class="form" id="newsletterForm" novalidate>
+    <div class="form__img">
+      <picture>
+        <source srcset="./img/illustration-sign-up-desktop.svg" media="(min-width: 1024px)">
+        <source srcset="./img/illustration-sign-up-tablet.svg" media="(min-width: 768px)">
+        <img src="./img/illustration-sign-up-mobile.svg" alt="Sign Up Mobile">
+      </picture>
+    </div>
+
+    <div class="form__inner">
+      <div class="form__info">
+        <h1 class="form__title">Stay updated!</h1>
+        <p class="form__text">Join 60,000+ product managers receiving monthly updates on:</p>
+        <ul class="form__list">
+          <li class="form__list-item">
+            <img src="./img/icons/icon-list.svg" alt="Icon List">
+            <span>Product discovery and building what matters</span>
+          </li>
+          <li class="form__list-item">
+            <img src="./img/icons/icon-list.svg" alt="Icon List">
+            <span>Measuring to ensure updates are a success</span>
+          </li>
+          <li class="form__list-item">
+            <img src="./img/icons/icon-list.svg" alt="Icon List">
+            <span>And much more!</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form__actions">
+        <div class="form__control form-control">
+          <label class="label" for="newsletterFormEmail">
+            <span>Email address</span>
+            <span class="error" aria-live="polite">Valid email required</span>
+          </label>
+          <input type="email" id="newsletterFormEmail" name="email" placeholder="email@company.com" autocomplete="email" required class="form-control__input input">
+        </div>
+        <button class="btn" type="submit">Subscribe to monthly newsletter</button>
+      </div>
+    </div>
+  </form>
+</main>
+
+<div class="modal-overlay" id="modalSuccess" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+  <div class="modal">
+    <div class="modal__img">
+      <img src="./img/icons/icon-success.svg" alt="Icon Check">
+    </div>
+    <h2 class="modal__title">Thanks for subscribing!</h2>
+    <p class="modal__text">A confirmation email has been sent to <b id="modalSuccessEmail">ash@loremcompany.com</b>. Please open it and click the button inside to confirm your subscription.</p>
+    <button class="modal__btn btn" id="modalSuccessBtn" aria-label="Dismiss success message">Dismiss message</button>
+  </div>
+</div>
+
+<script src="./js/main.js" defer></script>
+</body>
+</html>

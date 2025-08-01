@@ -1,0 +1,97 @@
+@use "variables" as *;
+@use "functions" as *;
+
+.form {
+  width: 100%;
+  background-color: $color-white;
+
+  &__img {
+    width: 100%;
+    border-radius: 0 0 to-rem(16) to-rem(16);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__inner {
+    padding: $spacing-500 $spacing-300 to-rem(44);
+    @include flex-col($x: $spacing-500);
+  }
+
+  &__info {
+    @include flex-col($x: $spacing-300);
+  }
+
+  &__title {
+    @include text-preset-1;
+  }
+
+  &__text {
+    @include text-preset-2;
+  }
+
+  &__list {
+    @include flex-col($x: $spacing-100);
+
+    &-item {
+      @include flex-row($x: $spacing-200);
+
+      img {
+        width: to-rem(21);
+        height: to-rem(21);
+      }
+
+      span {
+        @include text-preset-2;
+      }
+    }
+  }
+
+  &__actions {
+    @include flex-col($x: $spacing-300);
+  }
+  
+  @media (min-width: to-rem(768)) {
+    padding: $spacing-500;
+    border-radius: to-rem(36);
+    box-shadow: 0 15px 60px 0 rgba(0, 0, 0, 0.25);
+
+    &__img {
+      border-radius: to-rem(16);
+    }
+
+    &__inner {
+      padding-right: 0;
+      padding-bottom: 0;
+      padding-left: 0;
+    }
+  }
+
+  @media (min-width: to-rem(1024)) {
+    max-width: to-rem(904);
+    display: flex;
+    flex-direction: row-reverse;
+    gap: $spacing-800;
+    padding: $spacing-300 $spacing-400;
+
+    &__img {
+      width: to-rem(400);
+      flex-shrink: 0;
+    }
+
+    &__inner {
+      padding: 0;
+      @include flex-col($x: $spacing-400, $z: center);
+    }
+  }
+
+
+  &.fade-out {
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+}

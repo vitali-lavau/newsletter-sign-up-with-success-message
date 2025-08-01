@@ -1,0 +1,98 @@
+@use "sass:math";
+
+// Colors
+$color-white: oklch(1 0 0);
+$color-black: oklch(0 0 0);
+$color-gray: oklch(0.6665 0 0);
+$color-red: oklch(0.6957 0.1947 27.58);
+$color-red-100: oklch(0.947 0.0264 20.5);
+$color-blue-700: oklch(0.3479 0.0367 280.08);
+$color-blue-800: oklch(0.2836 0.0496 277.9);
+$gradient-4: linear-gradient(90deg, #FF6A3A 0%, #FF527B 100%);
+
+// Base
+$base-font: 16px;
+$font-family: "Roboto", sans-serif;
+$leading: 1.2;
+$background-color: $color-white;
+
+// Spacing
+$spacing-100: math.div(8px, $base-font) * 1rem;
+$spacing-200: math.div(16px, $base-font) * 1rem;
+$spacing-300: math.div(24px, $base-font) * 1rem;
+$spacing-400: math.div(32px, $base-font) * 1rem;
+$spacing-500: math.div(40px, $base-font) * 1rem;
+$spacing-600: math.div(48px, $base-font) * 1rem;
+$spacing-800: math.div(64px, $base-font) * 1rem;
+$spacing-900: math.div(72px, $base-font) * 1rem;
+$spacing-1300: math.div(104px, $base-font) * 1rem;
+
+:root {
+  --color-white: #{$color-white};
+  --color-black: #{$color-black};
+  --color-gray: #{$color-gray};
+  --color-red: #{$color-red};
+  --color-blue-700: #{$color-blue-700};
+  --color-blue-800: #{$color-blue-800};
+  --gradient-4: #{$gradient-4};
+  --spacing-100: #{$spacing-100};
+  --spacing-200: #{$spacing-200};
+  --spacing-300: #{$spacing-300};
+  --spacing-400: #{$spacing-400};
+  --spacing-500: #{$spacing-500};
+  --spacing-600: #{$spacing-600};
+  --spacing-800: #{$spacing-800};
+  --spacing-900: #{$spacing-900};
+  --spacing-1300: #{$spacing-1300};
+}
+
+// Typography
+@mixin text-preset-1 {
+  font-size: math.div(40px, $base-font) * 1rem;
+  font-weight: 700;
+  line-height: 1;
+
+  @media (min-width: math.div(768px, $base-font) * 1rem) {
+    font-size: math.div(56px, $base-font) * 1rem;
+  }
+}
+
+@mixin text-preset-2($x: normal) {
+  font-size: 1rem;
+  line-height: 1.5;
+
+  @if $x == 'normal' {
+    font-weight: normal;
+  } @else if $x == 'bold' {
+    font-weight: 700;
+  }
+}
+
+@mixin text-preset-3 {
+  font-size: math.div(12px, $base-font) * 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+// Markup
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-row($x: 0, $y: flex-start, $z: stretch) {
+  display: flex;
+  flex-direction: row;
+  justify-content: #{$y};
+  align-items: #{$z};
+  gap: #{$x};
+}
+
+@mixin flex-col($x: 0, $y: stretch, $z: flex-start) {
+  display: flex;
+  flex-direction: column;
+  align-items: #{$y};
+  justify-content: #{$z};
+  gap: #{$x};
+}
